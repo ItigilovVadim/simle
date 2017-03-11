@@ -16,7 +16,7 @@ public class App {
         someClass.first = "outer_first";
         someClass.second = "outer_second";
         someClass.innerClass = someInnerClass;
-
+oeuaoeu
         try {
             String serialized = objectMapper.writeValueAsString(someClass);
             System.out.println(serialized);
