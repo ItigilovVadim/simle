@@ -1,0 +1,50 @@
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
+
+public class App {
+    public static void main(String[] args) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        SomeInnerClass someInnerClass = new SomeInnerClass();
+        someInnerClass.inner_first = "inner_first";
+        someInnerClass.inner_second= "inner_second";
+
+        SomeClass someClass = new SomeClass();
+        someClass.first = "outer_first";
+        someClass.second = "outer_second";
+        someClass.innerClass = someInnerClass;
+
+        try {
+            String serialized = objectMapper.writeValueAsString(someClass);
+            System.out.println(serialized);
+
+            SomeInnerClass deserialized = objectMapper.readValue(serialized, SomeInnerClass.class);
+            System.out.println(deserialized.inner_first);
+            System.out.println(deserialized.inner_second);
+
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+class SomeClass {
+    @JsonUnwrapped
+    public SomeInnerClass innerClass;
+    public String first;
+    public String second;
+}
+
+
+class SomeInnerClass implements Aware {
+    public String inner_first;
+    public String inner_second;
+}
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+interface Aware {}
