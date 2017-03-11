@@ -25,7 +25,7 @@ public class App {
             SomeInnerClass deserialized = objectMapper.readValue(serialized, SomeInnerClass.class);
             System.out.println(deserialized.inner_first);
             System.out.println(deserialized.inner_second);
-
+oeuoeu
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         } catch (IOException e) {
