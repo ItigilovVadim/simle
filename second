@@ -32,7 +32,7 @@ oeuaoeu
         }
     }
 }
-
+aoeuaoeu
 class SomeClass {
     @JsonUnwrapped
     public SomeInnerClass innerClass;
