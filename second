@@ -11,7 +11,7 @@ public class App {
         SomeInnerClass someInnerClass = new SomeInnerClass();
         someInnerClass.inner_first = "inner_first";
         someInnerClass.inner_second= "inner_second";
-
+        aoeuaoeu
         SomeClass someClass = new SomeClass();
         someClass.first = "outer_first";
         someClass.second = "outer_second";
